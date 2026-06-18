@@ -1,5 +1,5 @@
 /* ============================================================
-   DayForge — Service Worker
+   StreakDay — Service Worker
    Handles: offline caching, background sync, push notifications
    ============================================================ */
 
@@ -109,7 +109,7 @@ self.addEventListener('push', event => {
   };
 
   event.waitUntil(
-    self.registration.showNotification(data.title || 'DayForge', options)
+    self.registration.showNotification(data.title || 'StreakDay', options)
   );
 });
 
