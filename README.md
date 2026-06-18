@@ -120,7 +120,7 @@ DayForge uses Firebase for its cloud database (Firestore) and for satisfying sec
 
 1. Create a free account at [netlify.com](https://netlify.com).
 2. Drag and drop the entire `dayforge` folder onto the Netlify dashboard, **or** connect your GitHub repository for continuous deployment (recommended — every `git push` auto-deploys).
-3. Netlify provides a URL like `your-app-name.netlify.app`.
+3. Netlify provides a URL like `https://dayforge1.netlify.app/`.
 4. Back in Firebase Console → Authentication → Settings → Authorized domains → add your Netlify domain. Without this step, sign-in will fail.
 5. (Optional) Add a custom domain under Netlify → Domain management.
 
@@ -180,3 +180,6 @@ A write-through cache to IndexedDB ensures the app remains responsive offline an
 ## License
 
 This project is provided as-is for personal use. Adapt freely.
+
+## URL
+https://dayforge1.netlify.app/
