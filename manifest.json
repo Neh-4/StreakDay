@@ -1,6 +1,6 @@
 {
-  "name": "DayForge",
-  "short_name": "DayForge",
+  "name": "StreakDay",
+  "short_name": "StreakDay",
   "description": "Daily productivity tracker — exercise, study, diet, journal",
   "start_url": "/",
   "scope": "/",
@@ -27,7 +27,7 @@
       "src": "/screenshots/home.png",
       "sizes": "390x844",
       "type": "image/png",
-      "label": "DayForge home dashboard"
+      "label": "StreakDay home dashboard"
     }
   ],
   "categories": ["health", "fitness", "productivity", "lifestyle"],
