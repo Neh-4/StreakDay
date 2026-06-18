@@ -1,8 +1,8 @@
-# DayForge
+# StreakDay
 
 A daily productivity tracker for exercise, study, diet, and personal practice — built as an installable Progressive Web App (PWA) that works on phones, tablets, and desktops without going through an app store.
 
-DayForge tracks five areas of a daily routine: workouts with auto-calculated lifting volume, Pomodoro study sessions, macro-nutrient intake from meals, a journaling/check-in practice, and one fully custom streak habit the user names themselves. Every module tracks a streak, keeps daily/weekly/monthly history, and syncs across devices.
+StreakDay tracks five areas of a daily routine: workouts with auto-calculated lifting volume, Pomodoro study sessions, macro-nutrient intake from meals, a journaling/check-in practice, and one fully custom streak habit the user names themselves. Every module tracks a streak, keeps daily/weekly/monthly history, and syncs across devices.
 
 ---
 
@@ -56,7 +56,7 @@ No npm install, no bundler, no backend server to maintain. The entire app is a s
 ## Project structure
 
 ```
-dayforge/
+streakday/
 ├── index.html           Main application — UI, logic, all 5 modules
 ├── manifest.json         PWA metadata (name, icons, theme color, display mode)
 ├── service-worker.js     Offline caching, background sync, push notifications
@@ -72,12 +72,12 @@ dayforge/
 
 ## Getting started locally
 
-DayForge has no build step — you can open `index.html` directly in a browser to preview the UI. However, data storage requires Firebase to be configured (see below), so for full functionality:
+StreakDay has no build step — you can open `index.html` directly in a browser to preview the UI. However, data storage requires Firebase to be configured (see below), so for full functionality:
 
 1. Clone this repository
    ```bash
-   git clone https://github.com/YOUR_USERNAME/dayforge.git
-   cd dayforge
+   git clone https://github.com/YOUR_USERNAME/streakday.git
+   cd streakday
    ```
 2. Open `index.html` in a browser, or serve it locally to test service worker behavior properly:
    ```bash
@@ -89,7 +89,7 @@ DayForge has no build step — you can open `index.html` directly in a browser t
 
 ## Setting up Firebase
 
-DayForge uses Firebase for its cloud database (Firestore) and for satisfying security rules via Anonymous Authentication.
+StreakDay uses Firebase for its cloud database (Firestore) and for satisfying security rules via Anonymous Authentication.
 
 1. Go to [console.firebase.google.com](https://console.firebase.google.com) and create a new project.
 2. **Authentication** → Sign-in method → enable **Anonymous**.
@@ -114,13 +114,15 @@ DayForge uses Firebase for its cloud database (Firestore) and for satisfying sec
 5. **Project settings** (gear icon) → Your apps → Web app (`</>`) → register the app → copy the `firebaseConfig` object.
 6. Open `index.html`, find the `firebaseConfig` placeholder near the top of the `<script>` block, and paste your real values in.
 
+> Note: your Firebase **project ID** (e.g. `your-project-12345`) is a permanent backend identifier unrelated to the app's display name. Renaming the app in `manifest.json` or the UI has no effect on it, and it should never be changed once set — doing so disconnects the app from its existing database.
+
 ---
 
 ## Deploying to Netlify
 
 1. Create a free account at [netlify.com](https://netlify.com).
-2. Drag and drop the entire `dayforge` folder onto the Netlify dashboard, **or** connect your GitHub repository for continuous deployment (recommended — every `git push` auto-deploys).
-3. Netlify provides a URL like `https://dayforge1.netlify.app/`.
+2. Drag and drop the entire `streakday` folder onto the Netlify dashboard, **or** connect your GitHub repository for continuous deployment (recommended — every `git push` auto-deploys).
+3. Netlify provides a URL like `your-app-name.netlify.app`.
 4. Back in Firebase Console → Authentication → Settings → Authorized domains → add your Netlify domain. Without this step, sign-in will fail.
 5. (Optional) Add a custom domain under Netlify → Domain management.
 
@@ -132,7 +134,7 @@ DayForge uses Firebase for its cloud database (Firestore) and for satisfying sec
 
 **iPhone (Safari only)** — open the site in Safari, tap the Share icon, scroll down and tap "Add to Home Screen", then tap Add. Chrome and Firefox on iOS cannot install PWAs due to platform restrictions; it must be Safari.
 
-**Desktop (Chrome/Edge)** — an install icon appears in the address bar; click it to add DayForge as a standalone desktop app.
+**Desktop (Chrome/Edge)** — an install icon appears in the address bar; click it to add StreakDay as a standalone desktop app.
 
 Once installed, the app opens fullscreen with no browser address bar and an icon on the home screen indistinguishable from a native app.
 
@@ -152,6 +154,8 @@ dayforge:u:arjun:custom:2026-06-17     → custom streak check-in for that day
 dayforge:u:arjun:streaks               → current streak counts, all modules
 dayforge:users                         → username → profile + PIN lookup table
 ```
+
+> Note: the `dayforge` key prefix and internal identifiers (IndexedDB database name, service worker cache name, sync tag) are unrelated to the app's display name "StreakDay" — they are internal storage labels carried over from development and do not appear anywhere in the user interface. They can be left as-is safely.
 
 A write-through cache to IndexedDB ensures the app remains responsive offline and that no data is lost if the app crashes mid-save; pending writes sync to Firestore automatically once connectivity returns.
 
@@ -174,6 +178,7 @@ A write-through cache to IndexedDB ensures the app remains responsive offline an
 - [ ] Wire up push notifications for Pomodoro and streak-at-risk reminders
 - [ ] Add weekly/monthly summary charts to the home dashboard
 - [ ] Archive logs older than 90 days to keep Firestore usage within free tier as the user base grows
+- [ ] Rename internal storage identifiers (`dayforge` prefix, cache names) to fully match StreakDay branding
 
 ---
 
@@ -181,5 +186,3 @@ A write-through cache to IndexedDB ensures the app remains responsive offline an
 
 This project is provided as-is for personal use. Adapt freely.
 
-## URL
-https://dayforge1.netlify.app/
